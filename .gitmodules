@@ -1,0 +1,6 @@
+[submodule "lib/radiohead"]
+	path = lib/radiohead
+	url = https://github.com/hallard/RadioHead.git
+[submodule "lib/rf95modem"]
+	path = lib/rf95modem
+	url = https://github.com/gh0st42/rf95modem.git
