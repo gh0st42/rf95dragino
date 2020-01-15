@@ -145,16 +145,17 @@ void print_gps()
     printf("Longitude : %lf\n", gpsd_data->fix.longitude);
     printf("Satellites: %d\n", gpsd_data->satellites_visible);
     printf("Altitude  : %.02lfM\n", gpsd_data->fix.altitude / 3.2808);
-    printf("Timestamp : %lf\n", gpsd_data->fix.time);
+    printf("Timestamp : %.00lf\n", gpsd_data->fix.time);
     // convert GPSD's timestamp_t into time_t
     time_t seconds{(time_t)ts};
     auto tm = *std::localtime(&seconds);
 
     std::ostringstream oss;
     //oss << std::put_time(&tm, "%d-%m-%Y %H:%M:%S");
-    oss << std::put_time(&tm, "%H:%M:%S");
+    oss << std::put_time(&tm, "Date      : %d.%m.%Y\nTime      : %H:%M:%S");
+    //oss << std::put_time(&tm, "%H:%M:%S");
     //auto time_str{oss.str()};
-    printf("Time      : %s\n", oss.str().c_str());
+    printf("%s\n", oss.str().c_str());
 
     out_println("+OK");
 }
