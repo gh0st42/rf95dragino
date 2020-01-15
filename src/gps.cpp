@@ -144,7 +144,7 @@ void print_gps()
     printf("Latitude  : %lf\n", gpsd_data->fix.latitude);
     printf("Longitude : %lf\n", gpsd_data->fix.longitude);
     printf("Satellites: %d\n", gpsd_data->satellites_visible);
-    printf("Altitude  : %.02lfM\n", gpsd_data->fix.altitude / 3.2808);
+    printf("Altitude  : %.02lfM\n", gpsd_data->fix.altitude /*/ 3.2808*/); // Should be meters
     printf("Timestamp : %.00lf\n", gpsd_data->fix.time);
     // convert GPSD's timestamp_t into time_t
     time_t seconds{(time_t)ts};
