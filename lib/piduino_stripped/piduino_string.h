@@ -63,7 +63,6 @@ public:
   String() : std::string() {}
   String(const String &s, size_t pos, size_t len = std::string::npos) : std::string(s, pos, len) {}
   String(const char *s) : std::string(s) {}
-  String(const float f) : std::string(std::to_string(f)) {}
   String(const char *s, size_t n) : std::string(s, n) {}
   String(size_t n, char c) : std::string(n, c) {}
   String(const std::string &s) : std::string(s) {}
@@ -74,6 +73,8 @@ public:
   explicit String(unsigned int n, unsigned char base = 10) : String(toString(n, base)) {}
   explicit String(long n, unsigned char base = 10) : String(toString(n, base)) {}
   explicit String(unsigned long n, unsigned char base = 10) : String(toString(n, base)) {}
+  explicit String(float f, unsigned char digits = 2) : String(toString(f, digits)) {}
+
   //------------------------------------------------------------------------
   explicit String(char c) : String()
   {
@@ -152,6 +153,7 @@ public:
   static inline String toString(unsigned int num, unsigned char base = 10);
   static inline String toString(unsigned short num, unsigned char base = 10);
   static inline String toString(unsigned char num, unsigned char base = 10);
+  static String toString(float num, unsigned char digits = 2);
 };
 
 //------------------------------------------------------------------------

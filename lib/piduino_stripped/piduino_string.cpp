@@ -100,6 +100,15 @@ String String::toString(long num, unsigned char base)
 }
 
 // -----------------------------------------------------------------------------
+String String::toString(float num, unsigned char digits)
+{
+  char tmpbuf[1024];
+  snprintf(tmpbuf, 1024, "%.02f", num);
+
+  return String(tmpbuf);
+}
+
+// -----------------------------------------------------------------------------
 void String::getBytes(unsigned char *buf, unsigned int bufsize, unsigned int index) const
 {
 
