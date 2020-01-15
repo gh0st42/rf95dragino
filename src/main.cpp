@@ -51,6 +51,8 @@ void setup()
   FD_ZERO(&readfds);
   timeout.tv_sec = 0;
   timeout.tv_usec = 0;
+
+  out_println("+READY");
 }
 void loop()
 {
