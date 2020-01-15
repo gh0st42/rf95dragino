@@ -13,6 +13,7 @@
 #include "RasPiBoards.h"
 
 #include "modem.h"
+#include "gps.h"
 
 volatile sig_atomic_t force_exit = false;
 
@@ -43,6 +44,10 @@ void setup()
 
   rf95.setModeRx();
 
+#ifdef USE_GPS
+  init_gps();
+#endif
+
   FD_ZERO(&readfds);
   timeout.tv_sec = 0;
   timeout.tv_usec = 0;
@@ -72,6 +77,7 @@ void loop()
 #endif
 
     modem_receive();
+
 #ifdef RF_LED_PIN
     led_blink = millis();
     digitalWrite(RF_LED_PIN, HIGH);
@@ -88,6 +94,9 @@ void loop()
     led_blink = 0;
     digitalWrite(RF_LED_PIN, LOW);
   }
+#endif
+#ifdef USE_GPS
+  gps_loop_tick();
 #endif
   // Let OS doing other tasks
   // For timed critical appliation you can reduce or delete
