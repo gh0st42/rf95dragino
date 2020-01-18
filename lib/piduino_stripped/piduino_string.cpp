@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with the Piduino Library; if not, see <http://www.gnu.org/licenses/>.
  */
+#include <iomanip>
 #include <piduino_string.h>
 
 namespace Piduino
@@ -102,10 +103,10 @@ String String::toString(long num, unsigned char base)
 // -----------------------------------------------------------------------------
 String String::toString(float num, unsigned char digits)
 {
-  char tmpbuf[1024];
-  snprintf(tmpbuf, 1024, "%.02f", num);
+  std::stringstream ss;
+  ss << std::fixed << std::setprecision(digits) << num;
 
-  return String(tmpbuf);
+  return String(ss.str());
 }
 
 // -----------------------------------------------------------------------------

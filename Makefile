@@ -46,7 +46,7 @@ modem.o: $(RF95MODEMBASE)/modem.cpp
 				$(CC) $(CFLAGS) -c $(INCLUDE) $<
 
 rf95modem: 		main.o         RH_RF95.o RasPi.o RHHardwareSPI.o RHGenericDriver.o RHGenericSPI.o RHSPIDriver.o piduino_string.o modem.o gps.o
-				$(CC) $^ $(LIBS) -o rf95modem
+				$(CC) $^ $(LIBS) -o $@
 
 clean:
 				rm -rf *.o rf95modem
