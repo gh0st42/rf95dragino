@@ -108,8 +108,17 @@ void loop()
 
 int main(int argc, const char *argv[])
 {
+  float freq = 0.0;
+  if(argc==2) {
+    float freq = atof(argv[1]);
+  }
   setup();
-
+  if (freq > 0) {
+    char cmd_str[1024];
+    snprintf(cmd_str, 1024, "AT+FREQ=%.2f", freq);
+    printf("Setting default frequency to %.2f Mhz\n", freq);
+    handle_command(cmd_str);
+  }
   while (!force_exit)
   {
     loop();
