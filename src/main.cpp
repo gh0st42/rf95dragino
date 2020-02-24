@@ -110,7 +110,7 @@ int main(int argc, const char *argv[])
 {
   float freq = 0.0;
   if(argc==2) {
-    float freq = atof(argv[1]);
+    freq = atof(argv[1]);
   }
   setup();
   if (freq > 0) {
